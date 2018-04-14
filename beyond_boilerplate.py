@@ -1,3 +1,5 @@
+# from https://www.youtube.com/watch?v=Wb1YFgHqUZ8
+
 import Tkinter as tk
 
 class App(tk.Frame):
@@ -17,6 +19,16 @@ class App(tk.Frame):
         self.master.config(menu=tk.Menu(self.master))
 
         tk.Label(self, text="This is your GUI boilerplate").pack()
+
+        tk.Button(self, text='OK', default='active', command=self.click_ok).pack(side='right')
+        tk.Button(self, text='Cancel', command=self.click_cancel).pack(side='right')
+
+    def click_ok(self):
+        print("User clicked ok")
+
+    def click_cancel(self):
+        print("User click cancel")
+        self.master.destroy()
 
 if __name__ == '__main__':
     root = tk.Tk()
