@@ -18,10 +18,16 @@ class App(tk.Frame):
 
         self.master.config(menu=tk.Menu(self.master))
 
-        tk.Label(self, text="This is your GUI boilerplate").pack()
+        #moving the label into its own frame
+        dialog_frame = tk.Frame(self)
+        dialog_frame.pack(padx=20, pady=15)
+        tk.Label(dialog_frame, text='GUI Boilerplate').pack()
 
-        tk.Button(self, text='OK', default='active', command=self.click_ok).pack(side='right')
-        tk.Button(self, text='Cancel', command=self.click_cancel).pack(side='right')
+        #creating button frame and placing the buttons inside
+        button_frame = tk.Frame(self)
+        button_frame.pack(padx=15, pady=(0, 15), anchor='e')
+        tk.Button(button_frame, text='OK', default='active', command=self.click_ok).pack(side='right')
+        tk.Button(button_frame, text='Cancel', command=self.click_cancel).pack(side='right')
 
     def click_ok(self):
         print("User clicked ok")
