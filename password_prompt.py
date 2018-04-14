@@ -18,10 +18,9 @@ class App(tk.Frame):
 
         self.master.config(menu=tk.Menu(self.master))
 
-        #moving the label into its own frame
-        dialog_frame = tk.Frame(self)
-        dialog_frame.pack(padx=20, pady=15)
-        tk.Label(dialog_frame, text='Please authenticate with your username and password before continuing.').pack()
+        #message vs label, message will auto-wrap text by default
+        tk.Message(self, text='Please authenticate with your username and password before continuing.',
+        font='System 12 bold', justify='left', aspect=800).pack(pady=(15,0))
 
         username_frame = tk.Frame(self)
         username_frame.pack(padx=15, pady=15)
