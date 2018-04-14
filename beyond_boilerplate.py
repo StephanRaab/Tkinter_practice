@@ -29,6 +29,11 @@ class App(tk.Frame):
         tk.Button(button_frame, text='OK', default='active', command=self.click_ok).pack(side='right')
         tk.Button(button_frame, text='Cancel', command=self.click_cancel).pack(side='right')
 
+        #final touches
+        self.master.protocol('WM_DELETE_WINDOW', self.click_cancel)
+        self.master.bind('<Return>', self.click_ok)
+        self.master.bind('<Escape>', self.click_cancel)
+
     def click_ok(self):
         print("User clicked ok")
 
