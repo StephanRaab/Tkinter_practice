@@ -22,15 +22,19 @@ class App(tk.Frame):
         tk.Message(self, text='Please authenticate with your username and password before continuing.',
         font='System 12 bold', justify='left', aspect=800).pack(pady=(15,0))
 
-        username_frame = tk.Frame(self)
-        username_frame.pack(padx=15, pady=15)
-        tk.Label(username_frame, text='Username:').pack(side='left')
-        tk.Entry(username_frame).pack(side='left')
+        dialog_frame = tk.Frame(self)
+        dialog_frame.pack(padx=20, pady=15, anchor='w')
 
-        password_frame = tk.Frame(self)
-        password_frame.pack(padx=15, pady=5)
-        tk.Label(password_frame, text='Password:').pack(side='left')
-        tk.Entry(password_frame).pack(side='left')
+        tk.Label(dialog_frame, text='Username:').grid(row=0, column=0, sticky='w')
+
+        self.user_input = tk.Entry(dialog_frame, background='white', width=24)
+        self.user_input.grid(row=0, column=1, sticky='w')
+        self.user_input.focus_set()
+
+        tk.Label(dialog_frame, text='Password:').grid(row=1, column=0, sticky='w')
+ 
+        self.password_input = tk.Entry(dialog_frame, background='white', width=24, show='*')
+        self.password_input.grid(row=1, column=1, sticky='w')
 
         #creating button frame and placing the buttons inside
         button_frame = tk.Frame(self)
@@ -44,7 +48,8 @@ class App(tk.Frame):
         self.master.bind('<Escape>', self.click_cancel)
 
     def click_ok(self):
-        print("User clicked ok")
+        print("The User clicked 'OK':\nUsername: {}\nPassword: {}".format(self.user_input.get(),
+         self.password_input.get()))
 
     def click_cancel(self):
         print("User click cancel")
